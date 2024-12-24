@@ -1,10 +1,11 @@
-import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { createRoot } from "react-dom/client";
 import { useState } from "react";
+
 import AdoptedPetContext from "./AdoptedPetContext";
-import Details from "./Details";
 import SearchParams from "./SearchParams";
+import Details from "./Details";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -18,7 +19,13 @@ const queryClient = new QueryClient({
 const App = () => {
   const adoptedPet = useState(null);
   return (
-    <div>
+    <div
+      className="p-0 m-0"
+      style={{
+        background:
+          "url('https://pets-images.dev-apis.com/pets/wallpaperA.jpg')",
+      }}
+    >
       <BrowserRouter>
         <AdoptedPetContext.Provider value={adoptedPet}>
           <QueryClientProvider client={queryClient}>
